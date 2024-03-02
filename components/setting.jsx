@@ -8,6 +8,7 @@ const ProfileSection = () => {
     const [loading, isLoading] = useState(false);
     const nameRef = useRef();
     const bioRef = useRef();
+    const roleRef = useRef();
     const profilePictureRef = useRef();
     const [msg, setMsg] = useState({ message: '', isError: false });
     const router = useRouter();
@@ -28,6 +29,7 @@ const ProfileSection = () => {
         if (profilePictureRef.current.files[0]) { formData.append('profilePicture', profilePictureRef.current.files[0]); }
         formData.append('name', nameRef.current.value);
         formData.append('bio', bioRef.current.value);
+        formData.append('role', roleRef.current.value);
 
         const res = await fetch('/api/user', {
             method: 'PATCH',
@@ -87,6 +89,10 @@ const ProfileSection = () => {
                     <div class="mb-3">
                         <label for="userName" class="form-label">Name</label>
                         <input type="text" class="form-control" name="userName" id="userName" placeholder="Your Name" ref={nameRef} />
+                    </div>
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Role</label>
+                        <input type="text" class="form-control" id="role" name="role" ref={roleRef} disabled />
                     </div>
                     <div class="mb-3">
                         <label for="bio" class="form-label">Bio</label>

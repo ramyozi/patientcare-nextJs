@@ -17,36 +17,37 @@ export default function Home() {
     };
     return (
         <>
-            <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-5">
-                        {!user ? (<>
-                            <img
-                                src='/Images/Home.png'
-                                className="img-fluid" alt=""
-                            />
-                        </>) : (<img
-                            src="/Images/Home2.png"
-                            className="img-fluid" alt=""
-                        />)}
+            <div className="card mb-3">
+                <div className="row g-0">
+                    <div className="col-md-5">
+                        {!user ? (
+                            <img src='/Images/logo.png' className="img-fluid" alt="Welcome to PatientCare" />
+                        ) : (
+                            <img src="/Images/Home2.png" className="img-fluid" alt="User Dashboard" />
+                        )}
                     </div>
-                    <div class="col-md-7">
-                        <div class="card-body h-100 text-center">
+                    <div className="col-md-7">
+                        <div className="card-body h-100 text-center">
                             <div className='row h-100' style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
                                 <div className='col-sm-12'>
-                                    <h2 style={{ marginTop: '0' }}><span style={{ fontWeight: 'bolder', color: `${user ? '#5c9eff' : '#5c9eff'}`, textShadow: '2px 2px black' }}>Hello </span>{!user ? 'Stranger' : user.name}</h2>
-                                    <p>Welcome to <strong>Nextjs Auth</strong></p>
+                                    <h2 style={{ marginTop: '0' }}>
+                                        <span style={{ fontWeight: 'bolder', color: `${user ? '#5c9eff' : '#5c9eff'}`, textShadow: '2px 2px black' }}>
+                                            Hello
+                                        </span> {!user ? 'Stranger' : user.name}
+                                    </h2>
+                                    <p>Welcome to <strong>PatientCare</strong> – Revolutionizing Medical File Management</p>
                                 </div>
                                 <div className='col-sm-12'>
-                                    {!user ? (<>
-                                        <div className="card-text">
-                                            This is an Authentication build in <a href="https://nextjs.org/" target="_blank" style={{ textDecoration: 'underline', color: "" }}>Next.js</a> using <a href="http://www.passportjs.org/" target="_blank" style={{ textDecoration: 'underline', color: "" }}>Passport.js</a> and <a href="https://www.mongodb.com/" target="_blank" style={{ textDecoration: 'underline', color: "" }}>Mongodb </a>
-                                            . It is a fully functional & ready to use module build for your next web application.This is template 0.0 I will be pushing more new personalized templates soon.
-                                        </div>
-                                        <div class="alert alert-primary my-2" role="alert">
-                                            Till then go on try it around, I hope you like it
-                                        </div>
-                                    </>) : (<AfterLogin />)}
+                                    {!user ? (
+                                        <>
+                                            <div className="card-text">
+                                                PatientCare offers a seamless way to manage and access medical files online. With our innovative platform, healthcare providers can easily create, manage, and retrieve patient files through a unique QR code system. This system ensures that critical patient information is readily available when needed, improving the efficiency of medical care delivery.
+                                            </div>
+                                            <div className="alert alert-primary my-2" role="alert">
+                                                Explore our features and see how we can transform your medical file management process.
+                                            </div>
+                                        </>
+                                    ) : (<AfterLogin />)}
                                 </div>
                                 <div className='col-sm-12' style={{ alignSelf: 'end' }}>
                                     {!user ? (
@@ -62,12 +63,11 @@ export default function Home() {
                                         </>
                                     ) : (
                                         <>
-
-                                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                                             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                                 <Link href="/user/[userId]" as={`/user/${user._id}`}>
                                                     <a className="btn btn-primary">Profile</a>
                                                 </Link>
+                                                <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
                                             </div>
                                         </>
                                     )}
@@ -78,5 +78,5 @@ export default function Home() {
                 </div>
             </div>
         </>
-    )
+    );
 }

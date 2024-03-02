@@ -25,6 +25,7 @@ export default function Login() {
             const body = {
                 email: e.currentTarget.email.value,
                 name: e.currentTarget.name.value,
+                role: e.currentTarget.role.value,
                 password: e.currentTarget.password.value
             };
             const res = await fetch("/api/users", {
@@ -65,6 +66,15 @@ export default function Login() {
                     <div class="mb-3">
                         <label for="cpassword" class="form-label"><RiLockPasswordFill /> Confirm Password</label>
                         <input type="password" class="form-control" id="cpassword" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="role" class="form-label"><RiLockPasswordLine /> Role</label>
+                        <select class="form-select" id="role" required>
+                            <option value="">Select role</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="admin">Admin</option>
+                            <option value="medic">Medic</option>
+                        </select>
                     </div>
                     <div className="mb-3">
                         <p>Already registered ? <Link href="/login">Login</Link></p>

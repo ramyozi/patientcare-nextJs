@@ -10,7 +10,7 @@ export default function UserPage({ user }) {
 
     if (!user) return <Error statusCode={404} />;
     const {
-        name, email, bio, profilePicture,
+        name, email, bio, profilePicture, role,
     } = user || {};
     const [currentUser] = useCurrentUser();
     const isCurrentUser = currentUser?._id === user._id;
@@ -45,6 +45,12 @@ export default function UserPage({ user }) {
                                     <div class="card-text">{email}</div>
                                 </div>
                             </div>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h3 className='card-title'>Role</h3>
+                                    <div class="card-text">{role}</div>
+                                </div>
+                            </div>    
                         </div>
                         <div className='card-action text-center mb-3'>
                             <Link href='/setting'><a className='btn btn-primary'>Edit</a></Link>

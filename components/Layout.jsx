@@ -90,7 +90,7 @@ export default function Layout({ children }) {
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                   >
-                    About Patientcare
+                    About Us
                   </a>
                 </li>
               </ul>
